@@ -10,18 +10,24 @@ nonfiction2 = Tome_Rater.create_non_fiction("Computing Machinery and Intelligenc
 novel2 = Tome_Rater.create_novel("The Diamond Age", "Neal Stephenson", 10101010)
 novel3 = Tome_Rater.create_novel("There Will Come Soft Rains", "Ray Bradbury", 10001000)
 
-#Attempt to create book with already assigned ISBN
+#Attempt to create book with already assigned ISBN:
+print("-- Test: create book with ISBN already used by another book --")
 novel3_duplicate = Tome_Rater.create_novel("There Will Come Soft Rains 2", "Ray Bradbury", 10001000)
 
-#Update ISBN
+#Update ISBN:
+print("\n-- Test: update isbn --")
 Tome_Rater.set_isbn(novel1, 9781536831139)
 
 #Create users:
 Tome_Rater.add_user("Alan Turing", "alan@turing.com")
 Tome_Rater.add_user("David Marr", "david@computation.org")
+
+#Attempt to create user with already used email:
+print("\n-- Test: add user with email already used by another user --")
 Tome_Rater.add_user("Fake David Marr", "david@computation.org")
 
-#Attempt to create user with already used email
+#Attempt to create user with invalid email:
+print("\n-- Test: add user with invalid email --")
 Tome_Rater.add_user("Invalid Email", "invalid_email.com")
 
 #Add a user with three books already read:
@@ -37,28 +43,28 @@ Tome_Rater.add_book_to_user(novel2, "marvin@mit.edu", 2)
 Tome_Rater.add_book_to_user(novel3, "marvin@mit.edu", 2)
 Tome_Rater.add_book_to_user(novel3, "david@computation.org", 4)
 
-#Print books catalog
+#Print books catalog:
 Tome_Rater.print_catalog()
 
-#Print users
+#Print users:
 Tome_Rater.print_users()
 
-print("\n######### Most positive user #########\n")
+#Print most positive user:
+print("\n-- Most positive user --\n")
 print(Tome_Rater.most_positive_user())
-print("\n######################################\n")
 
-print("\n######### Highest rated book #########\n")
+#Print highest rated book:
+print("\n-- Highest rated book --\n")
 print(Tome_Rater.highest_rated_book())
-print("\n######################################\n")
 
-print("\n########### Most read book ###########\n")
+#Print most read book:
+print("\n-- Most read book --\n")
 print(Tome_Rater.most_read_book())
-print("\n######################################\n")
 
-print("\n###### Ranking most read books ######\n")
+#Print 5 most read books:
+print("\n-- Ranking most read books --\n")
 print(Tome_Rater.get_n_most_read_books(5))
-print("#####################################\n")
 
-print("\n### Ranking most prolific readers ###\n")
+#Print 2 most prolific readers:
+print("\n-- Ranking most prolific readers --\n")
 print(Tome_Rater.get_n_most_prolific_readers(2))
-print("#####################################\n")
